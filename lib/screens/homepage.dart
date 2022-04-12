@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movies_app/components/darktheme/dark_theme_provider.dart';
 import 'package:flutter_movies_app/components/home.dart';
 import 'package:flutter_movies_app/components/profile.dart';
 import 'package:flutter_movies_app/components/search.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,8 +19,16 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
+
     return Scaffold(
-        appBar: AppBar(title: const Text("Flutter Movies App")),
+        appBar: AppBar(
+            title: const Text("Flutter Movies App"),
+            leading: Switch(
+                value: themeChange.darkTheme,
+                onChanged: (bool value) {
+                  themeChange.darkTheme = value;
+                })),
         body: list[index],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: index,
@@ -29,8 +39,6 @@ class _HomePageState extends State<HomePage> {
               index = i;
             });
           },
-          backgroundColor: Colors.blue,
-          selectedItemColor: Colors.white,
           iconSize: 48,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
