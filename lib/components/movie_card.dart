@@ -7,18 +7,20 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 200,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(
-                      'https://image.tmdb.org/t/p/w500' +
-                          movie['poster_path']))),
-        ),
-        Text(movie['title'])
-      ],
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        children: [
+          Container(
+            height: 200,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage('https://image.tmdb.org/t/p/w500' +
+                        movie['poster_path']))),
+          ),
+          Text(movie['title'], style: TextStyle(fontSize: 12),)
+        ],
+      ),
     );
   }
 }

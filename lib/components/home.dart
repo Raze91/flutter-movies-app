@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_movies_app/components/movies_list.dart';
 import 'package:tmdb_api/tmdb_api.dart';
+
+import 'movies_list.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,6 +13,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List popularMovies = [];
+  List trendings = [];
+  List topRatedMovies = [];
 
   @override
   void initState() {
@@ -26,15 +29,37 @@ class _HomeState extends State<Home> {
     );
 
     Map popularResults = await tmdbWithLogs.v3.movies.getPopular();
+    Map trendingResults = await tmdbWithLogs.v3.trending.getTrending();
+    Map topRatedResults = await tmdbWithLogs.v3.movies.getTopRated();
+
     setState(() {
       popularMovies = popularResults['results'];
+      trendings = trendingResults['results'];
+      topRatedMovies = topRatedResults['results'];
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [MoviesList(title: 'Popular Movies', movies: popularMovies)],
-    );
+    return FutureBuilder(builder: ((context, snapshot) {
+      if (popularMovies.isEmpty ||
+          trendings.isEmpty ||
+          topRatedMovies.isEmpty) {
+        return SizedBox(
+          height: MediaQuery.of(context).size.height / 1.3,
+          child: const Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      } else {
+        return ListView(
+          children: [
+            MoviesList(movies: popularMovies, title: 'Popular Movies'),
+            MoviesList(movies: trendings, title: 'Trending Movies'),
+            MoviesList(movies: topRatedMovies, title: 'Top Rated Movies')
+          ],
+        );
+      }
+    }));
   }
 }

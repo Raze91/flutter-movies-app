@@ -14,19 +14,28 @@ class MoviesList extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Column(
         children: [
-          Text(title),
+          Text(title,
+              style:
+                  const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
           const SizedBox(height: 10),
           SizedBox(
-            height: 270,
+            height: 240,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: movies.length,
                 itemBuilder: (context, index) {
                   return InkWell(
-                    onTap: () => {},
-                    child: SizedBox(
-                      width: 140,
-                      child: MovieCard(movie: movies[index]),
+                    onTap: () => {
+                      Navigator.of(context).pushNamed('/details',
+                          arguments: {'movie': movies[index]})
+                    },
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 140,
+                          child: MovieCard(movie: movies[index]),
+                        )
+                      ],
                     ),
                   );
                 }),
