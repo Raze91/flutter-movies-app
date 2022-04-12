@@ -2,21 +2,20 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
- class Styles {
-   
+class Styles {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
-      primarySwatch: Colors.lightBlue,
-      primaryColor: isDarkTheme ? Colors.black : Colors.white,
+        primarySwatch: Colors.lightBlue,
+        primaryColor: isDarkTheme ? Colors.black : Colors.white,
         backgroundColor: isDarkTheme ? Colors.black : const Color(0xffF1F5FB),
         indicatorColor:
             isDarkTheme ? const Color(0xff0E1D36) : const Color(0xffCBDCF8),
         hintColor:
-            isDarkTheme ? const Color(0xff280C0B) : const Color(0xffEECED3),
+            isDarkTheme ? const Color(0xffEECED3) : const Color(0xff372901),
         highlightColor:
             isDarkTheme ? const Color(0xff372901) : const Color(0xffFCE192),
         hoverColor:
-            isDarkTheme ? const Color(0xff3A3A3B) : const Color(0xff4285F4),
+            isDarkTheme ? Colors.grey : Colors.grey.withAlpha(75),
         focusColor:
             isDarkTheme ? const Color(0xff0B2512) : const Color(0xffA8DAB5),
         disabledColor: Colors.grey,
@@ -27,17 +26,16 @@ import 'package:flutter/material.dart';
             colorScheme: isDarkTheme
                 ? const ColorScheme.dark()
                 : const ColorScheme.light()),
-        appBarTheme: const AppBarTheme(
-          elevation: 0.0,
+        appBarTheme: Theme.of(context).appBarTheme.copyWith(
+          backgroundColor: isDarkTheme ? const Color(0xff3A3A3B) : Colors.lightBlue
         ),
         textSelectionTheme: TextSelectionThemeData(
             selectionColor: isDarkTheme ? Colors.white : Colors.black),
         bottomNavigationBarTheme: Theme.of(context)
             .bottomNavigationBarTheme
             .copyWith(
-                backgroundColor:
-                    isDarkTheme ? Colors.black : Colors.lightBlue, selectedItemColor: isDarkTheme ? const Color(0xffA8DAB5) : Colors.white)
-    );
-    
+                backgroundColor: isDarkTheme ? const Color(0xff3A3A3B) : Colors.lightBlue,
+                selectedItemColor:
+                    isDarkTheme ? const Color(0xffA8DAB5) : Colors.white));
   }
 }
