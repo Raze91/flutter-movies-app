@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies_app/components/darktheme/dark_theme_provider.dart';
 import 'package:flutter_movies_app/components/home.dart';
-import 'package:flutter_movies_app/components/profile.dart';
 import 'package:flutter_movies_app/components/search.dart';
+import 'package:flutter_movies_app/screens/profile.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int index = 0;
 
-  List<Widget> list = [const Home(), const SearchPage(), const Profile()];
+  List<Widget> list = [const Home(), const SearchPage(), const ProfileScreen()];
 
   @override
   Widget build(BuildContext context) {
