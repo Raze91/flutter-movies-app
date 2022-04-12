@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
-import 'movies_list.dart';
+import 'movies/movies_list.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
