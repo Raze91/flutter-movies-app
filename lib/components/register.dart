@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -10,15 +11,19 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   final key = GlobalKey<FormState>();
-  String email = '', password = '', errorMessage = '';
+  String email = '', password = '', name = '', city = '', errorMessage = '';
 
   void signUpToFirebase(String email, String password) async {
     try {
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then(
-            (value) => Navigator.of(context).pushReplacementNamed('/'),
-          );
+      UserCredential result = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      User? user = result.user;
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user!.uid)
+          .set({'Name': name, "City": city}).then(
+        (value) => Navigator.of(context).pushReplacementNamed('/'),
+      );
     } on FirebaseException catch (error) {
       if (error.code == 'weak-password') {
         setState(() {
@@ -84,6 +89,40 @@ class _RegisterFormState extends State<RegisterForm> {
                 });
               },
               decoration: const InputDecoration(hintText: 'Password'),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            TextFormField(
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+              onSaved: (String? value) {
+                setState(() {
+                  name = value!;
+                });
+              },
+              decoration: const InputDecoration(hintText: 'Name'),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            TextFormField(
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+              onSaved: (String? value) {
+                setState(() {
+                  city = value!;
+                });
+              },
+              decoration: const InputDecoration(hintText: 'City'),
             ),
             const SizedBox(
               height: 25,
