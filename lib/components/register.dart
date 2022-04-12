@@ -21,7 +21,7 @@ class _RegisterFormState extends State<RegisterForm> {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(user!.uid)
-          .set({'Name': name, "City": city}).then(
+          .set({'Name': name, "City": city, "Mail": email}).then(
         (value) => Navigator.of(context).pushReplacementNamed('/'),
       );
     } on FirebaseException catch (error) {
