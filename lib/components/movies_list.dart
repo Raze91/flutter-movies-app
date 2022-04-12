@@ -19,7 +19,7 @@ class MoviesList extends StatelessWidget {
                   const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
           const SizedBox(height: 10),
           SizedBox(
-            height: 240,
+            height: 260,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: movies.length,
