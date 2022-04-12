@@ -1,5 +1,5 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_movies_app/routes.dart';
 
@@ -19,8 +19,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(future: _initialization, builder: ((context, snapshot) {
-      if(snapshot.hasError) {
+    return FutureBuilder(
+        future: _initialization, builder: ((context, snapshot) {
+      if (snapshot.hasError) {
         return const MaterialApp(
           home: Scaffold(
             body: SafeArea(
@@ -40,19 +41,12 @@ class MyApp extends StatelessWidget {
           ),
           debugShowCheckedModeBanner: false,
           routes: routes,
-          initialRoute: FirebaseAuth.instance.currentUser != null ? '/' : '/register',
+          initialRoute:
+          FirebaseAuth.instance.currentUser != null ? '/' : '/',
         );
       }
 
       return Container();
     }));
-    // return MaterialApp(
-    //   title: 'Flutter Demo',
-    //   debugShowCheckedModeBanner: false,
-    //   theme: ThemeData(
-    //     primarySwatch: Colors.lightBlue,
-    //   ),
-    //   routes: routes,
-    // );
   }
 }
