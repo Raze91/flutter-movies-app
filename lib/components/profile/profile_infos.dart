@@ -132,7 +132,7 @@ class ProfileInfos extends StatelessWidget {
                           onPressed: () {
                             signOutOfFirebase();
                           },
-                          child: const Text('Déconnexion'),
+                          child: const Text('Logout'),
                         )
                       ]),
                     )
