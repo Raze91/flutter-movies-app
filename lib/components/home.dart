@@ -56,9 +56,14 @@ class _HomeState extends State<Home> {
       } else {
         return ListView(
           children: [
-            MoviesList(movies: popularMovies, genres: genres, title: 'Popular Movies'),
-            MoviesList(movies: trendings, genres: genres, title: 'Trending Movies'),
-            MoviesList(movies: topRatedMovies, genres: genres, title: 'Top Rated Movies')
+            MoviesList(
+                movies: popularMovies, genres: genres, title: 'Popular Movies'),
+            MoviesList(
+                movies: trendings, genres: genres, title: 'Trending Movies'),
+            MoviesList(
+                movies: topRatedMovies,
+                genres: genres,
+                title: 'Top Rated Movies')
           ],
         );
       }

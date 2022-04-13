@@ -8,9 +8,9 @@ class MoviesList extends StatelessWidget {
 
   const MoviesList(
       {Key? key,
-        required this.movies,
-        required this.genres,
-        required this.title})
+      required this.movies,
+      required this.genres,
+      required this.title})
       : super(key: key);
 
   String getGenres(movieIdx) {
@@ -19,7 +19,7 @@ class MoviesList extends StatelessWidget {
     if (movies[movieIdx]['genre_ids'].length != 0) {
       for (final genreId in movies[movieIdx]['genre_ids']) {
         final genre = genres.where((genre) => genre['id'] == genreId).toList();
-        if(genre.isNotEmpty) {
+        if (genre.isNotEmpty) {
           finalGenre.add(genre[0]['name']);
         }
       }
@@ -35,8 +35,10 @@ class MoviesList extends StatelessWidget {
       child: Column(
         children: [
           Text(title,
-              style:
-              const TextStyle(fontWeight: FontWeight.w700, fontSize: 16, letterSpacing: 1.2)),
+              style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                  letterSpacing: 1.2)),
           const SizedBox(height: 10),
           SizedBox(
             height: 290,
@@ -46,15 +48,18 @@ class MoviesList extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () => {
-                      Navigator.of(context).pushNamed('/details',
-                          arguments: {'movie': movies[index], 'genresString': getGenres(index)})
+                      Navigator.of(context).pushNamed('/details', arguments: {
+                        'movie': movies[index],
+                        'genresString': getGenres(index)
+                      })
                     },
                     child: Row(
                       children: [
                         SizedBox(
                           width: 350,
-                          child:
-                          MovieCard(movie: movies[index], genresString: getGenres(index)),
+                          child: MovieCard(
+                              movie: movies[index],
+                              genresString: getGenres(index)),
                         )
                       ],
                     ),

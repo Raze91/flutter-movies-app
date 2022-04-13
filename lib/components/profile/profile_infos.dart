@@ -50,8 +50,7 @@ class ProfileInfos extends StatelessWidget {
                         borderRadius: BorderRadius.circular(
                           30,
                         ),
-                        border: Border.all(
-                          width: 2.0),
+                        border: Border.all(width: 2.0),
                       ),
                       height: 500,
                       child: Column(children: [
@@ -101,7 +100,6 @@ class ProfileInfos extends StatelessWidget {
                                             children: [
                                               Text('$name',
                                                   style: const TextStyle(
-                                                      
                                                       fontSize: 20),
                                                   textAlign: TextAlign.start),
                                               Text('$city',
@@ -117,8 +115,7 @@ class ProfileInfos extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Icon(Icons.mail,
-                                      size: 20),
+                                  const Icon(Icons.mail, size: 20),
                                   const SizedBox(width: 20),
                                   Text('$email',
                                       style: const TextStyle(

@@ -12,7 +12,7 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DateTime date;
-    if (movie["release_date"] != null ) {
+    if (movie["release_date"] != "") {
       date = DateTime.parse(movie["release_date"]);
     } else {
       date = DateTime.parse(movie['first_air_date']);

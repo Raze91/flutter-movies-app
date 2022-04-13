@@ -10,12 +10,9 @@ class Styles {
             isDarkTheme ? const Color(0xff0E1D36) : const Color(0xffCBDCF8),
         hintColor:
             isDarkTheme ? const Color(0xffEECED3) : const Color(0xff372901),
-        highlightColor:
-            isDarkTheme ? const Color(0xff372901) : Colors.blue,
-        hoverColor:
-            isDarkTheme ? Colors.grey : Colors.lightBlue.withAlpha(75),
-        focusColor:
-            isDarkTheme ? const Color(0xff0B2512) : Colors.blue,
+        highlightColor: isDarkTheme ? const Color(0xff372901) : Colors.blue,
+        hoverColor: isDarkTheme ? Colors.grey : Colors.lightBlue.withAlpha(75),
+        focusColor: isDarkTheme ? const Color(0xff0B2512) : Colors.blue,
         disabledColor: Colors.grey,
         cardColor: isDarkTheme ? const Color(0xFF151515) : Colors.white,
         canvasColor: isDarkTheme ? const Color(0xff3A3A3B) : Colors.white,
@@ -25,14 +22,15 @@ class Styles {
                 ? const ColorScheme.dark()
                 : const ColorScheme.light()),
         appBarTheme: Theme.of(context).appBarTheme.copyWith(
-          backgroundColor: isDarkTheme ? const Color(0xff282828) : Colors.lightBlue
-        ),
+            backgroundColor:
+                isDarkTheme ? const Color(0xff282828) : Colors.lightBlue),
         textSelectionTheme: TextSelectionThemeData(
             selectionColor: isDarkTheme ? Colors.white : Colors.black),
         bottomNavigationBarTheme: Theme.of(context)
             .bottomNavigationBarTheme
             .copyWith(
-                backgroundColor: isDarkTheme ? const Color(0xff282828) : Colors.lightBlue,
+                backgroundColor:
+                    isDarkTheme ? const Color(0xff282828) : Colors.lightBlue,
                 selectedItemColor:
                     isDarkTheme ? const Color(0xffA8DAB5) : Colors.white));
   }
