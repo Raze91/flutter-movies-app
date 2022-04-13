@@ -10,6 +10,7 @@ class MovieDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as Map;
     final movie = args['movie'];
+    final genresString = args['genresString'];
 
     final themeChange = Provider.of<DarkThemeProvider>(context);
 
@@ -44,6 +45,9 @@ class MovieDetails extends StatelessWidget {
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
           ),
+          Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(genresString)),
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Text('Release date : ' + movie['release_date'])),

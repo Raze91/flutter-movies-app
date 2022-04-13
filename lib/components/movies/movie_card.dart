@@ -2,26 +2,14 @@ import 'package:flutter/cupertino.dart';
 
 class MovieCard extends StatelessWidget {
   final movie;
-  final genres;
+  final genresString;
 
-  const MovieCard({Key? key, required this.movie, required this.genres})
+  const MovieCard({Key? key, required this.movie, required this.genresString})
       : super(key: key);
-
-  String getGenres() {
-    var finalGenre = [];
-
-    for (var genreId in movie['genre_ids']) {
-      final genre = genres.where((genre) => genre['id']  == genreId).toList();
-      finalGenre.add(genre[0]['name']);
-    }
-
-    return finalGenre.join(" - ");
-  }
-
 
   @override
   Widget build(BuildContext context) {
-
+    print(genresString);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
@@ -38,7 +26,7 @@ class MovieCard extends StatelessWidget {
             style: TextStyle(fontSize: 12),
           ),
           Text(
-            getGenres(),
+            genresString,
             style: TextStyle(fontSize: 12),
           )
         ],

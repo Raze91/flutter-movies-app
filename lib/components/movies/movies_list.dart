@@ -6,8 +6,23 @@ class MoviesList extends StatelessWidget {
   final List genres;
   final String title;
 
-  const MoviesList({Key? key, required this.movies, required this.genres, required this.title})
+  const MoviesList(
+      {Key? key,
+      required this.movies,
+      required this.genres,
+      required this.title})
       : super(key: key);
+
+  String getGenres(movieIdx) {
+    var finalGenre = [];
+
+    for (var genreId in movies[movieIdx]['genre_ids']) {
+      final genre = genres.where((genre) => genre['id'] == genreId).toList();
+      finalGenre.add(genre[0]['name']);
+    }
+
+    return finalGenre.join(" - ");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +43,14 @@ class MoviesList extends StatelessWidget {
                   return InkWell(
                     onTap: () => {
                       Navigator.of(context).pushNamed('/details',
-                          arguments: {'movie': movies[index]})
+                          arguments: {'movie': movies[index], 'genresString': getGenres(index)})
                     },
                     child: Row(
                       children: [
                         SizedBox(
                           width: 140,
-                          child: MovieCard(movie: movies[index], genres: genres),
+                          child:
+                              MovieCard(movie: movies[index], genresString: getGenres(index)),
                         )
                       ],
                     ),
