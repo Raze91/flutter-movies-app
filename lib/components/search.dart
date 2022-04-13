@@ -74,7 +74,7 @@ class _SearchFormState extends State<SearchForm> {
             const SizedBox(
               height: 25,
             ),
-            MoviesList(movies: movies, genres: genres, title: 'Search results :'),
+            MoviesList(movies: movies, genres: genres, title: movies.length > 0 ? 'Search results :' : ''),
           ],
         ),
       ),
