@@ -11,11 +11,14 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime date;
-    if (movie["release_date"] != "") {
+    DateTime? date;
+    if (movie["release_date"] != "" && movie["release_date"] != null) {
       date = DateTime.parse(movie["release_date"]);
-    } else {
+    } else if (movie["first_air_date"] != "" &&
+        movie["first_air_date"] != null) {
       date = DateTime.parse(movie['first_air_date']);
+    } else {
+      date = null;
     }
 
     return Container(
@@ -26,15 +29,17 @@ class MovieCard extends StatelessWidget {
           SizedBox(
               height: 200,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: movie['backdrop_path'] == null
-                    ? Image.asset('noImage.png', fit: BoxFit.cover)
-                    : Image.network(
-                        'https://image.tmdb.org/t/p/w500' +
-                            movie['backdrop_path'],
-                        fit: BoxFit.cover,
-                      ),
-              )),
+                  borderRadius: BorderRadius.circular(20),
+                  child: movie['backdrop_path'] == null
+                      ? Image.asset('noImage.png', fit: BoxFit.cover)
+                      : FadeInImage(
+                          image: NetworkImage(
+                            'https://image.tmdb.org/t/p/w500/' +
+                                movie['backdrop_path'],
+                          ),
+                          fit: BoxFit.cover,
+                          placeholder: const AssetImage('loading.gif'),
+                        ))),
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: Text(
@@ -54,7 +59,7 @@ class MovieCard extends StatelessWidget {
             ),
           ),
           Text(
-            DateFormat.yMMMMd().format(date),
+            date != null ? DateFormat.yMMMMd().format(date) : "",
             style: const TextStyle(fontSize: 12),
           )
         ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+
 import '../components/darktheme/dark_theme_provider.dart';
 
 class MovieDetails extends StatelessWidget {
@@ -13,11 +14,14 @@ class MovieDetails extends StatelessWidget {
     final genresString = args['genresString'];
 
     final themeChange = Provider.of<DarkThemeProvider>(context);
-    DateTime date;
-    if (movie["release_date"] != "") {
+    DateTime? date;
+    if (movie["release_date"] != "" && movie["release_date"] != null) {
       date = DateTime.parse(movie["release_date"]);
-    } else {
+    } else if (movie["first_air_date"] != "" &&
+        movie["first_air_date"] != null) {
       date = DateTime.parse(movie['first_air_date']);
+    } else {
+      date = null;
     }
 
     return Scaffold(
@@ -30,17 +34,30 @@ class MovieDetails extends StatelessWidget {
       ]),
       body: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                  child: Container(
-                height: 350,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage('https://image.tmdb.org/t/p/w500' +
-                            movie['poster_path']))),
-              ))
-            ],
+          SizedBox(height: 10),
+          Container(
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: movie['backdrop_path'] == null
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child:
+                                  Image.asset('noImage.png', fit: BoxFit.cover),
+                            )
+                          ])
+                    : FadeInImage(
+                        height: 450,
+                        width: 300,
+                        image: NetworkImage(
+                          'https://image.tmdb.org/t/p/w500/' +
+                              movie['poster_path'],
+                        ),
+                        fit: BoxFit.cover,
+                        placeholder: const AssetImage('loading.gif'),
+                      )),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
@@ -50,13 +67,27 @@ class MovieDetails extends StatelessWidget {
           ),
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Text(genresString)),
+              child: Text(genresString != '' ? genresString : 'No genres')),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(movie['vote_average'] != null
+                    ? 'Score : ' + movie['vote_average'].toString()
+                    : 'No score found'),
+                Icon(Icons.star)
+              ],
+            ),
+          ),
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Text(DateFormat.yMMMMd().format(date))),
+              child: Text(date != null
+                  ? 'Release date : ' + DateFormat.yMMMMd().format(date)
+                  : "Release date : No release date")),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(movie['overview']),
+            padding: const EdgeInsets.all(10),
+            child: Text(movie['overview'] ?? "No description available"),
           ),
         ],
       ),
