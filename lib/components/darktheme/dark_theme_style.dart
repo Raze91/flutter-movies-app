@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class Styles {
@@ -13,28 +11,28 @@ class Styles {
         hintColor:
             isDarkTheme ? const Color(0xffEECED3) : const Color(0xff372901),
         highlightColor:
-            isDarkTheme ? const Color(0xff372901) : const Color(0xffFCE192),
+            isDarkTheme ? const Color(0xff372901) : Colors.blue,
         hoverColor:
-            isDarkTheme ? Colors.grey : Colors.grey.withAlpha(75),
+            isDarkTheme ? Colors.grey : Colors.lightBlue.withAlpha(75),
         focusColor:
-            isDarkTheme ? const Color(0xff0B2512) : const Color(0xffA8DAB5),
+            isDarkTheme ? const Color(0xff0B2512) : Colors.blue,
         disabledColor: Colors.grey,
         cardColor: isDarkTheme ? const Color(0xFF151515) : Colors.white,
-        canvasColor: isDarkTheme ? Colors.black : Colors.grey[50],
+        canvasColor: isDarkTheme ? const Color(0xff3A3A3B) : Colors.white,
         brightness: isDarkTheme ? Brightness.dark : Brightness.light,
         buttonTheme: Theme.of(context).buttonTheme.copyWith(
             colorScheme: isDarkTheme
                 ? const ColorScheme.dark()
                 : const ColorScheme.light()),
         appBarTheme: Theme.of(context).appBarTheme.copyWith(
-          backgroundColor: isDarkTheme ? const Color(0xff3A3A3B) : Colors.lightBlue
+          backgroundColor: isDarkTheme ? const Color(0xff282828) : Colors.lightBlue
         ),
         textSelectionTheme: TextSelectionThemeData(
             selectionColor: isDarkTheme ? Colors.white : Colors.black),
         bottomNavigationBarTheme: Theme.of(context)
             .bottomNavigationBarTheme
             .copyWith(
-                backgroundColor: isDarkTheme ? const Color(0xff3A3A3B) : Colors.lightBlue,
+                backgroundColor: isDarkTheme ? const Color(0xff282828) : Colors.lightBlue,
                 selectedItemColor:
                     isDarkTheme ? const Color(0xffA8DAB5) : Colors.white));
   }
