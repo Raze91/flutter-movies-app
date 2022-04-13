@@ -9,7 +9,6 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(genresString);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
