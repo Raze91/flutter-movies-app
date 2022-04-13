@@ -13,14 +13,14 @@ class Styles {
         hintColor:
             isDarkTheme ? const Color(0xffEECED3) : const Color(0xff372901),
         highlightColor:
-            isDarkTheme ? const Color(0xff372901) : const Color(0xffFCE192),
+            isDarkTheme ? const Color(0xff372901) : Colors.blue,
         hoverColor:
-            isDarkTheme ? Colors.grey : Colors.grey.withAlpha(75),
+            isDarkTheme ? Colors.grey : Colors.lightBlue.withAlpha(75),
         focusColor:
-            isDarkTheme ? const Color(0xff0B2512) : const Color(0xffA8DAB5),
+            isDarkTheme ? const Color(0xff0B2512) : Colors.blue,
         disabledColor: Colors.grey,
         cardColor: isDarkTheme ? const Color(0xFF151515) : Colors.white,
-        canvasColor: isDarkTheme ? const Color(0xff3A3A3B) : Colors.grey[50],
+        canvasColor: isDarkTheme ? const Color(0xff3A3A3B) : Colors.white,
         brightness: isDarkTheme ? Brightness.dark : Brightness.light,
         buttonTheme: Theme.of(context).buttonTheme.copyWith(
             colorScheme: isDarkTheme

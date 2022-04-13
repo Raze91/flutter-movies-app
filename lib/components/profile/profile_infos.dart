@@ -47,20 +47,11 @@ class ProfileInfos extends StatelessWidget {
                         ]),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            blurRadius: 4,
-                            offset: Offset(
-                              0.0,
-                              4,
-                            ),
-                          )
-                        ],
                         borderRadius: BorderRadius.circular(
                           30,
                         ),
+                        border: Border.all(
+                          width: 2.0),
                       ),
                       height: 500,
                       child: Column(children: [
@@ -110,12 +101,11 @@ class ProfileInfos extends StatelessWidget {
                                             children: [
                                               Text('$name',
                                                   style: const TextStyle(
-                                                      color: Colors.black,
+                                                      
                                                       fontSize: 20),
                                                   textAlign: TextAlign.start),
                                               Text('$city',
                                                   style: const TextStyle(
-                                                      color: Colors.black,
                                                       fontSize: 20),
                                                   textAlign: TextAlign.start),
                                             ]))
@@ -128,11 +118,10 @@ class ProfileInfos extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   const Icon(Icons.mail,
-                                      size: 20, color: Colors.black),
+                                      size: 20),
                                   const SizedBox(width: 20),
                                   Text('$email',
                                       style: const TextStyle(
-                                          color: Colors.black,
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold)),
                                 ])),
