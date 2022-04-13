@@ -3,9 +3,10 @@ import 'package:flutter_movies_app/components/movies/movie_card.dart';
 
 class MoviesList extends StatelessWidget {
   final List movies;
+  final List genres;
   final String title;
 
-  const MoviesList({Key? key, required this.movies, required this.title})
+  const MoviesList({Key? key, required this.movies, required this.genres, required this.title})
       : super(key: key);
 
   @override
@@ -33,7 +34,7 @@ class MoviesList extends StatelessWidget {
                       children: [
                         SizedBox(
                           width: 140,
-                          child: MovieCard(movie: movies[index]),
+                          child: MovieCard(movie: movies[index], genres: genres),
                         )
                       ],
                     ),

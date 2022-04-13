@@ -15,6 +15,7 @@ class _HomeState extends State<Home> {
   List popularMovies = [];
   List trendings = [];
   List topRatedMovies = [];
+  List genres = [];
 
   @override
   void initState() {
@@ -31,11 +32,13 @@ class _HomeState extends State<Home> {
     Map popularResults = await tmdbWithLogs.v3.movies.getPopular();
     Map trendingResults = await tmdbWithLogs.v3.trending.getTrending();
     Map topRatedResults = await tmdbWithLogs.v3.movies.getTopRated();
+    Map genresResult = await tmdbWithLogs.v3.genres.getMovieList();
 
     setState(() {
       popularMovies = popularResults['results'];
       trendings = trendingResults['results'];
       topRatedMovies = topRatedResults['results'];
+      genres = genresResult['genres'];
     });
   }
 
@@ -54,9 +57,9 @@ class _HomeState extends State<Home> {
       } else {
         return ListView(
           children: [
-            MoviesList(movies: popularMovies, title: 'Popular Movies'),
-            MoviesList(movies: trendings, title: 'Trending Movies'),
-            MoviesList(movies: topRatedMovies, title: 'Top Rated Movies')
+            MoviesList(movies: popularMovies, genres: genres, title: 'Popular Movies'),
+            MoviesList(movies: trendings, genres: genres, title: 'Trending Movies'),
+            MoviesList(movies: topRatedMovies, genres: genres, title: 'Top Rated Movies')
           ],
         );
       }
