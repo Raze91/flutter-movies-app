@@ -68,7 +68,7 @@ class _MyAppState extends State<MyApp> {
                     routes: routes,
                     initialRoute: FirebaseAuth.instance.currentUser != null
                         ? '/'
-                        : '/',
+                        : '/login',
                   );
                 }
 
