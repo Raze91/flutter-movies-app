@@ -39,7 +39,7 @@ class MovieDetails extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 10),
-            child: Text(movie['title'],
+            child: Text(movie['title'] ?? movie['name'],
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
           ),
@@ -48,7 +48,7 @@ class MovieDetails extends StatelessWidget {
               child: Text(genresString)),
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Text('Release date : ' + movie['release_date'])),
+              child: Text(movie['release_date'] ?? movie['first_air_date'])),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(movie['overview']),

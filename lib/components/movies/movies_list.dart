@@ -16,12 +16,16 @@ class MoviesList extends StatelessWidget {
   String getGenres(movieIdx) {
     var finalGenre = [];
 
-    for (var genreId in movies[movieIdx]['genre_ids']) {
-      final genre = genres.where((genre) => genre['id'] == genreId).toList();
-      finalGenre.add(genre[0]['name']);
+    if (movies[movieIdx]['genre_ids'].length != 0) {
+      for (var genreId in movies[movieIdx]['genre_ids']) {
+        final genre = genres.where((genre) => genre['id'] == genreId).toList();
+        if(genre.isNotEmpty) {
+          finalGenre.add(genre[0]['name']);
+        }
+      }
     }
 
-    return finalGenre.join(" - ");
+    return finalGenre.isNotEmpty ? finalGenre.join(" - ") : '';
   }
 
   @override
