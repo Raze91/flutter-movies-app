@@ -1,7 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class MovieCard extends StatelessWidget {
   final movie;
@@ -12,6 +11,13 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime date;
+    if (movie["release_date"] != null ) {
+      date = DateTime.parse(movie["release_date"]);
+    } else {
+      date = DateTime.parse(movie['first_air_date']);
+    }
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
@@ -48,7 +54,7 @@ class MovieCard extends StatelessWidget {
             ),
           ),
           Text(
-            movie['release_date'] ?? movie['first_air_date'],
+            DateFormat.yMMMMd().format(date),
             style: const TextStyle(fontSize: 12),
           )
         ],
