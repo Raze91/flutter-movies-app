@@ -63,8 +63,8 @@ class ProfileInfos extends StatelessWidget {
                                   topRight: Radius.circular(30.0),
                                 ),
                                 image: DecorationImage(
-                                  image: NetworkImage(
-                                      'https://images.pexels.com/photos/33041/antelope-canyon-lower-canyon-arizona.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+                                  image: AssetImage(
+                                      'profile.jpg'),
                                   fit: BoxFit.cover,
                                 ),
                               ),

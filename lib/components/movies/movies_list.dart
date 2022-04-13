@@ -41,7 +41,7 @@ class MoviesList extends StatelessWidget {
                   letterSpacing: 1.2)),
           const SizedBox(height: 10),
           SizedBox(
-            height: 290,
+            height: 300,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: movies.length,
@@ -56,7 +56,7 @@ class MoviesList extends StatelessWidget {
                     child: Row(
                       children: [
                         SizedBox(
-                          width: 350,
+                          width: 400,
                           child: MovieCard(
                               movie: movies[index],
                               genresString: getGenres(index)),

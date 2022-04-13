@@ -62,8 +62,10 @@ class MovieDetails extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
             child: Text(movie['title'] ?? movie['name'],
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    letterSpacing: 1.2)),
           ),
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
@@ -74,9 +76,12 @@ class MovieDetails extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(movie['vote_average'] != null
-                    ? 'Score : ' + movie['vote_average'].toString()
+                    ? 'Score : ' + movie['vote_average'].toString() + ' /10'
                     : 'No score found'),
-                Icon(Icons.star)
+                Padding(
+                  padding: EdgeInsets.only(bottom: 4),
+                  child: Icon(Icons.star),
+                )
               ],
             ),
           ),
@@ -87,7 +92,8 @@ class MovieDetails extends StatelessWidget {
                   : "Release date : No release date")),
           Padding(
             padding: const EdgeInsets.all(10),
-            child: Text(movie['overview'] ?? "No description available"),
+            child: Text(movie['overview'] ?? "No description available",
+                style: TextStyle(letterSpacing: 1.2, wordSpacing: 1)),
           ),
         ],
       ),
