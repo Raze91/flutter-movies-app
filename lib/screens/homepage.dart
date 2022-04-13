@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int index = 0;
 
-  List<Widget> list = [const Home(), const SearchPage(), const ProfileScreen()];
+  List<Widget> list = [const Home(), const SearchForm(), const ProfileScreen()];
 
   @override
   Widget build(BuildContext context) {
