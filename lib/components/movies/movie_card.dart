@@ -22,7 +22,7 @@ class MovieCard extends StatelessWidget {
                         movie['poster_path']))),
           ),
           Text(
-            movie['title'],
+            movie['title'] ?? '',
             style: TextStyle(fontSize: 12),
           ),
           Text(
