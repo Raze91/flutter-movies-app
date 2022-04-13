@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class MovieCard extends StatelessWidget {
   final movie;
-  final genresString;
+  final String genresString;
 
   const MovieCard({Key? key, required this.movie, required this.genresString})
       : super(key: key);
@@ -21,12 +21,12 @@ class MovieCard extends StatelessWidget {
                         movie['poster_path']))),
           ),
           Text(
-            movie['title'] ?? '',
-            style: TextStyle(fontSize: 12),
+            movie['title'] ?? movie['name'],
+            style: const TextStyle(fontSize: 12),
           ),
           Text(
             genresString,
-            style: TextStyle(fontSize: 12),
+            style: const TextStyle(fontSize: 12),
           )
         ],
       ),
