@@ -18,7 +18,10 @@ class MovieCard extends StatelessWidget {
                     image: NetworkImage('https://image.tmdb.org/t/p/w500' +
                         movie['poster_path']))),
           ),
-          Text(movie['title'], style: TextStyle(fontSize: 12),)
+          Text(
+            movie['title'] ?? '',
+            style: const TextStyle(fontSize: 12),
+          )
         ],
       ),
     );

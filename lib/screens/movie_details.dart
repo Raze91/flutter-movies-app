@@ -13,8 +13,6 @@ class MovieDetails extends StatelessWidget {
 
     final themeChange = Provider.of<DarkThemeProvider>(context);
 
-    print(movie);
-
     return Scaffold(
       appBar: AppBar(title: const Text('Movie Details'), actions: [
         Switch(

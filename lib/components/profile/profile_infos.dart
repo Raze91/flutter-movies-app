@@ -10,6 +10,12 @@ class ProfileInfos extends StatelessWidget {
     final User? user = FirebaseAuth.instance.currentUser;
     final String? uid = user?.uid;
 
+    void signOutOfFirebase() {
+      FirebaseAuth.instance.signOut().then(
+            (value) => Navigator.of(context).pushReplacementNamed('/login'),
+          );
+    }
+
     return FutureBuilder(
         future: Future.wait([
           Future.delayed(const Duration(seconds: 1)),
@@ -104,10 +110,12 @@ class ProfileInfos extends StatelessWidget {
                                             children: [
                                               Text('$name',
                                                   style: const TextStyle(
+                                                      color: Colors.black,
                                                       fontSize: 20),
                                                   textAlign: TextAlign.start),
                                               Text('$city',
                                                   style: const TextStyle(
+                                                      color: Colors.black,
                                                       fontSize: 20),
                                                   textAlign: TextAlign.start),
                                             ]))
@@ -116,15 +124,27 @@ class ProfileInfos extends StatelessWidget {
                         Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Icon(Icons.mail, size: 24),
+                                  const Icon(Icons.mail,
+                                      size: 20, color: Colors.black),
+                                  const SizedBox(width: 20),
                                   Text('$email',
                                       style: const TextStyle(
-                                          fontSize: 24,
+                                          color: Colors.black,
+                                          fontSize: 20,
                                           fontWeight: FontWeight.bold)),
                                 ])),
+                        const SizedBox(height: 50),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.red, onPrimary: Colors.white),
+                          onPressed: () {
+                            signOutOfFirebase();
+                          },
+                          child: const Text('Déconnexion'),
+                        )
                       ]),
                     )
                   ],
