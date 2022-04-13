@@ -34,17 +34,16 @@ class MovieDetails extends StatelessWidget {
             children: [
               Expanded(
                   child: Container(
-                height: 225,
+                height: 350,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        fit: BoxFit.cover,
                         image: NetworkImage('https://image.tmdb.org/t/p/w500' +
-                            movie['backdrop_path']))),
+                            movie['poster_path']))),
               ))
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
             child: Text(movie['title'] ?? movie['name'],
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),

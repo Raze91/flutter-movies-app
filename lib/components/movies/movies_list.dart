@@ -8,16 +8,16 @@ class MoviesList extends StatelessWidget {
 
   const MoviesList(
       {Key? key,
-      required this.movies,
-      required this.genres,
-      required this.title})
+        required this.movies,
+        required this.genres,
+        required this.title})
       : super(key: key);
 
   String getGenres(movieIdx) {
-    var finalGenre = [];
+    late List finalGenre = [];
 
     if (movies[movieIdx]['genre_ids'].length != 0) {
-      for (var genreId in movies[movieIdx]['genre_ids']) {
+      for (final genreId in movies[movieIdx]['genre_ids']) {
         final genre = genres.where((genre) => genre['id'] == genreId).toList();
         if(genre.isNotEmpty) {
           finalGenre.add(genre[0]['name']);
@@ -36,10 +36,10 @@ class MoviesList extends StatelessWidget {
         children: [
           Text(title,
               style:
-                  const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+              const TextStyle(fontWeight: FontWeight.w700, fontSize: 16, letterSpacing: 1.2)),
           const SizedBox(height: 10),
           SizedBox(
-            height: 260,
+            height: 290,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: movies.length,
@@ -52,9 +52,9 @@ class MoviesList extends StatelessWidget {
                     child: Row(
                       children: [
                         SizedBox(
-                          width: 140,
+                          width: 350,
                           child:
-                              MovieCard(movie: movies[index], genresString: getGenres(index)),
+                          MovieCard(movie: movies[index], genresString: getGenres(index)),
                         )
                       ],
                     ),
