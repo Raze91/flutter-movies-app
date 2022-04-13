@@ -20,21 +20,21 @@ class Styles {
             isDarkTheme ? const Color(0xff0B2512) : const Color(0xffA8DAB5),
         disabledColor: Colors.grey,
         cardColor: isDarkTheme ? const Color(0xFF151515) : Colors.white,
-        canvasColor: isDarkTheme ? Colors.black : Colors.grey[50],
+        canvasColor: isDarkTheme ? const Color(0xff3A3A3B) : Colors.grey[50],
         brightness: isDarkTheme ? Brightness.dark : Brightness.light,
         buttonTheme: Theme.of(context).buttonTheme.copyWith(
             colorScheme: isDarkTheme
                 ? const ColorScheme.dark()
                 : const ColorScheme.light()),
         appBarTheme: Theme.of(context).appBarTheme.copyWith(
-          backgroundColor: isDarkTheme ? const Color(0xff3A3A3B) : Colors.lightBlue
+          backgroundColor: isDarkTheme ? const Color(0xff282828) : Colors.lightBlue
         ),
         textSelectionTheme: TextSelectionThemeData(
             selectionColor: isDarkTheme ? Colors.white : Colors.black),
         bottomNavigationBarTheme: Theme.of(context)
             .bottomNavigationBarTheme
             .copyWith(
-                backgroundColor: isDarkTheme ? const Color(0xff3A3A3B) : Colors.lightBlue,
+                backgroundColor: isDarkTheme ? const Color(0xff282828) : Colors.lightBlue,
                 selectedItemColor:
                     isDarkTheme ? const Color(0xffA8DAB5) : Colors.white));
   }
