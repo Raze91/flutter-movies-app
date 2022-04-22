@@ -1,6 +1,11 @@
 # flutter_movies_app
 
-A new Flutter project.
+Movie app project made with Flutter.
+
+## Team
+
+- [Kenny Herillard](https://github.com/Drallireeh)
+- [Sami Hattab](https://github.com/Raze91)
 
 ## Getting Started : Commands
 
